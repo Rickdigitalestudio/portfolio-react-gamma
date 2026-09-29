@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construindo um Portfólio Profissional com React</title>
+    <meta name="description" content="Um guia completo para criar um portfólio online que destaca suas habilidades e projetos. React, Hooks e melhores práticas de desenvolvimento web.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <span class="topbar-title">Construindo um Portfólio Profissional com React</span>
+        <a class="topbar-cta" href="#deploy">Publicar meu portfólio</a>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-copy">
+                <h1>Construindo um Portfólio Profissional com React</h1>
+                <p>Um guia completo para criar um portfólio online que destaca suas habilidades e projetos. Aprenda a usar React, Hooks e as melhores práticas de desenvolvimento web.</p>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="mock">
+                    <div class="mock-nav"><span></span><span></span><span></span><span></span><span></span></div>
+                    <div class="mock-hero">
+                        <div class="mock-hero-text">
+                            <strong>Personal Portfolio</strong>
+                            <em>Personal Titles</em>
+                            <p><i></i><i></i><i class="short"></i></p>
+                            <div class="mock-btns"><b></b><b class="ghost"></b></div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70&auto=format&fit=crop" alt="">
+                    </div>
+                    <div class="mock-projects">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=70&auto=format&fit=crop" alt="">
+                        <div class="mock-side">
+                            <strong>Recent Projects</strong>
+                            <p><i></i><i></i><i class="short"></i></p>
+                            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=70&auto=format&fit=crop" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPORTÂNCIA -->
+        <section class="block">
+            <h2>A Importância de um Portfólio Online Impactante</h2>
+            <div class="cols-3">
+                <article class="card reveal">
+                    <h3>Primeira impressão</h3>
+                    <p>Seu portfólio é a primeira impressão. Ele demonstra sua capacidade e profissionalismo.</p>
+                </article>
+                <article class="card reveal">
+                    <h3>Vitrine de habilidades</h3>
+                    <p>Mostre seus projetos e habilidades técnicas de forma clara e atraente.</p>
+                </article>
+                <article class="card reveal">
+                    <h3>Oportunidades</h3>
+                    <p>Atraia recrutadores e clientes. Um portfólio bem construído abre portas.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PLANEJAMENTO -->
+        <section class="split">
+            <div class="split-visual light reveal" aria-hidden="true">
+                <div class="illus">
+                    <div class="illus-card cream"><strong>Wall is you!</strong><p><i></i><i></i></p><b></b></div>
+                    <div class="illus-card blush"><strong>Dialed out</strong><span class="sun"></span><span class="plant"></span></div>
+                </div>
+            </div>
+            <div class="split-copy">
+                <h2>Planejamento e Design: Estrutura e Identidade Visual</h2>
+                <ol class="steps">
+                    <li class="reveal"><span class="num">1</span><div><h3>Defina o público</h3><p>Para quem você está criando este portfólio? Ajuste o conteúdo para este público.</p></div></li>
+                    <li class="reveal"><span class="num">2</span><div><h3>Escolha a paleta de cores</h3><p>Cores consistentes reforçam sua marca pessoal e criam impacto visual.</p></div></li>
+                    <li class="reveal"><span class="num">3</span><div><h3>Crie um layout intuitivo</h3><p>Facilite a navegação. O usuário deve encontrar o que procura rapidamente.</p></div></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- CONFIGURAÇÃO -->
+        <section class="block">
+            <h2>Configuração do Ambiente React: Ferramentas Essenciais</h2>
+            <div class="cols-3">
+                <article class="card reveal"><p>Node.js e npm (ou Yarn) são fundamentais para o desenvolvimento React.</p></article>
+                <article class="card reveal"><p>Escolha um editor de código como VS Code, com extensões para React.</p></article>
+                <article class="card reveal"><p>O terminal é crucial para executar comandos e gerenciar dependências.</p></article>
+            </div>
+        </section>
+
+        <!-- COMPONENTIZAÇÃO -->
+        <section class="block">
+            <h2>Componentização: Blocos Reutilizáveis com React</h2>
+            <ol class="steps">
+                <li class="reveal"><span class="num">1</span><div><h3>Divida a interface</h3><p>Separe a interface em componentes menores e independentes.</p></div></li>
+                <li class="reveal"><span class="num">2</span><div><h3>Reutilize componentes</h3><p>Use componentes em diferentes partes do portfólio.</p></div></li>
+                <li class="reveal"><span class="num">3</span><div><h3>Facilite a manutenção</h3><p>Componentes isolados tornam o código mais fácil de manter e atualizar.</p></div></li>
+            </ol>
+        </section>
+
+        <!-- HOOKS -->
+        <section class="split">
+            <div class="split-visual atom reveal" aria-hidden="true">
+                <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
+                <span class="ring r1"></span><span class="ring r2"></span>
+                <em class="tag t1">useState</em><em class="tag t2">useEffect</em><em class="tag t3">useContext</em>
+            </div>
+            <div class="split-copy">
+                <h2>Hooks: Gerenciando Estado e Lógica Eficaz</h2>
+                <div class="mini-grid">
+                    <article class="mini reveal"><h3>useState</h3><p>Gerencie o estado dos seus componentes de forma simples e direta.</p></article>
+                    <article class="mini reveal"><h3>useEffect</h3><p>Execute efeitos colaterais, como chamadas de API, de forma controlada.</p></article>
+                    <article class="mini reveal"><h3>useContext</h3><p>Compartilhe estados entre componentes sem precisar passar props.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTEÚDO -->
+        <section class="block">
+            <h2>Integração de Conteúdo: Projetos, Habilidades e Experiências</h2>
+            <ol class="steps">
+                <li class="reveal"><span class="num">1</span><div><h3>Projetos</h3><p>Destaque projetos com descrições detalhadas, links e imagens.</p></div></li>
+                <li class="reveal"><span class="num">2</span><div><h3>Habilidades</h3><p>Liste suas habilidades técnicas e competências de forma organizada.</p></div></li>
+                <li class="reveal"><span class="num">3</span><div><h3>Experiência</h3><p>Apresente sua experiência profissional com cargos, empresas e datas.</p></div></li>
+            </ol>
+        </section>
+
+        <!-- OTIMIZAÇÃO -->
+        <section class="block">
+            <h2>Otimização para Performance e SEO: Melhores Práticas</h2>
+            <div class="cols-3">
+                <article class="card numbered reveal"><span class="num">1</span><h3>Otimize imagens</h3></article>
+                <article class="card numbered reveal"><span class="num">2</span><h3>Código limpo</h3></article>
+                <article class="card numbered reveal"><span class="num">3</span><h3>SEO</h3></article>
+            </div>
+        </section>
+
+        <!-- DEPLOY -->
+        <section class="block" id="deploy">
+            <h2>Deploy e Hospedagem: Publicando seu Portfólio Online</h2>
+            <div class="cols-3">
+                <article class="card reveal"><h3>Netlify</h3><p>Simples e rápido.</p></article>
+                <article class="card reveal"><h3>Vercel</h3><p>Escalabilidade garantida.</p></article>
+                <article class="card reveal"><h3>GitHub Pages</h3><p>Integração fácil.</p></article>
+            </div>
+        </section>
+
+        <!-- PRÓXIMOS PASSOS -->
+        <section class="block">
+            <h2>Próximos Passos: Aprimorando Continuamente seu Portfólio</h2>
+            <div class="pyramid-wrap">
+                <div class="pyramid reveal" aria-hidden="true">
+                    <div class="tier t1"><span>1</span></div>
+                    <div class="tier t2"><span>2</span></div>
+                    <div class="tier t3"><span>3</span></div>
+                </div>
+                <ul class="pyramid-labels">
+                    <li class="reveal">Feedback</li>
+                    <li class="reveal">Atualizações</li>
+                    <li class="reveal">Novas tecnologias</li>
+                </ul>
+            </div>
+            <p class="closing">Colete feedback de colegas e mentores. Adicione novos projetos e habilidades. Explore novas tecnologias para manter seu portfólio atualizado.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Reconstrução fiel para estudo a partir do documento “Construindo um Portfólio Profissional com React”.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

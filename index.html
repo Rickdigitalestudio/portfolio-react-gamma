@@ -1,179 +1,419 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construindo um Portfólio Profissional com React</title>
-    <meta name="description" content="Um guia completo para criar um portfólio online que destaca suas habilidades e projetos. React, Hooks e melhores práticas de desenvolvimento web.">
+    <title>React Universe — Guia Interativo de Portfólio Profissional com React</title>
+    <meta name="description" content="Guia interativo e 3D para criar um portfólio profissional com React: roadmap, demos de Hooks, simulador de deploy, checklist, quiz e dados de mercado.">
+    <meta name="theme-color" content="#0b0e17">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <canvas id="scene3d" aria-hidden="true"></canvas>
+    <div class="scene-veil" aria-hidden="true"></div>
+
     <header class="topbar">
-        <span class="topbar-title">Construindo um Portfólio Profissional com React</span>
-        <a class="topbar-cta" href="#deploy">Publicar meu portfólio</a>
+        <a class="brand" href="#inicio" aria-label="Início">
+            <svg viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+                <circle cx="20" cy="20" r="3.4" fill="var(--accent)"/>
+                <ellipse cx="20" cy="20" rx="17" ry="7" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+                <ellipse cx="20" cy="20" rx="17" ry="7" fill="none" stroke="var(--accent-2)" stroke-width="1.8" transform="rotate(60 20 20)"/>
+                <ellipse cx="20" cy="20" rx="17" ry="7" fill="none" stroke="var(--accent-3)" stroke-width="1.8" transform="rotate(120 20 20)"/>
+            </svg>
+            <span>React Universe</span>
+        </a>
+        <nav class="topnav" aria-label="Seções principais">
+            <a href="#roadmap">Roadmap</a>
+            <a href="#hooks">Hooks</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#deploy">Deploy</a>
+            <a href="#carreira">Carreira</a>
+            <a href="#quiz">Quiz</a>
+        </nav>
+        <div class="topbar-actions">
+            <button class="icon-btn" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">☀️</button>
+            <a class="topbar-cta" href="#checklist">Meu checklist</a>
+        </div>
     </header>
+
+    <nav class="dots" id="dots" aria-label="Navegação por pontos"></nav>
 
     <main>
         <!-- HERO -->
-        <section class="hero">
+        <section class="hero" id="inicio" data-nav="Início">
             <div class="hero-copy">
-                <h1>Construindo um Portfólio Profissional com React</h1>
-                <p>Um guia completo para criar um portfólio online que destaca suas habilidades e projetos. Aprenda a usar React, Hooks e as melhores práticas de desenvolvimento web.</p>
-            </div>
-            <div class="hero-visual" aria-hidden="true">
-                <div class="mock">
-                    <div class="mock-nav"><span></span><span></span><span></span><span></span><span></span></div>
-                    <div class="mock-hero">
-                        <div class="mock-hero-text">
-                            <strong>Personal Portfolio</strong>
-                            <em>Personal Titles</em>
-                            <p><i></i><i></i><i class="short"></i></p>
-                            <div class="mock-btns"><b></b><b class="ghost"></b></div>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70&auto=format&fit=crop" alt="">
-                    </div>
-                    <div class="mock-projects">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=70&auto=format&fit=crop" alt="">
-                        <div class="mock-side">
-                            <strong>Recent Projects</strong>
-                            <p><i></i><i></i><i class="short"></i></p>
-                            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=70&auto=format&fit=crop" alt="">
-                        </div>
-                    </div>
+                <span class="badge">Guia interativo · edição 2026 · agora em 3D</span>
+                <h1>Construindo um <span class="grad">Portfólio Profissional</span> com React</h1>
+                <p class="hero-sub">Um guia vivo para criar um portfólio que vende sua melhor versão. Role a página e o universo React reage com você — clique, arraste, teste os componentes reais e publique no fim.</p>
+                <p class="hero-type">Este portfólio é feito para: <span id="typewriter" class="type-target">recrutadores</span><span class="caret"></span></p>
+                <div class="hero-btns">
+                    <a class="btn primary" href="#roadmap">Começar a jornada</a>
+                    <a class="btn ghost" href="#quiz">Testar meus conhecimentos</a>
                 </div>
+                <ul class="hero-stats">
+                    <li><strong><span class="counter" data-target="78" data-suffix="%">0</span></strong><span>dos recrutadores avaliam o portfólio antes do currículo</span></li>
+                    <li><strong><span class="counter" data-target="7" data-suffix="s">0</span></strong><span>é o tempo médio de uma primeira impressão online</span></li>
+                    <li><strong><span class="counter" data-target="3" data-suffix="x">0</span></strong><span>mais chances de entrevista com projetos publicados</span></li>
+                </ul>
+                <p class="tiny-note">Números arredondados, baseados em pesquisas de mercado (Stack Overflow, Glassdoor, Nielsen Norman). Use-os como referência, não como dogma.</p>
+            </div>
+            <div class="hero-space" aria-hidden="true">
+                <div class="orbit-caption">🖱️ mova o mouse · 🖱️ role a página</div>
             </div>
         </section>
 
-        <!-- IMPORTÂNCIA -->
-        <section class="block">
-            <h2>A Importância de um Portfólio Online Impactante</h2>
+        <!-- POR QUE -->
+        <section class="block" id="porque" data-nav="Por que importa">
+            <span class="kicker">01 · Fundamentos</span>
+            <h2>Por que um portfólio online <span class="grad">muda o jogo</span>?</h2>
+            <p class="lead">Seu site é o único lugar onde você controla 100% da narrativa. Sem algoritmo decidindo quem vê você, sem limite de 2 páginas de PDF.</p>
             <div class="cols-3">
-                <article class="card reveal">
+                <article class="card tilt reveal">
+                    <span class="card-emoji">🎯</span>
                     <h3>Primeira impressão</h3>
-                    <p>Seu portfólio é a primeira impressão. Ele demonstra sua capacidade e profissionalismo.</p>
+                    <p>Antes de qualquer entrevista, seu link já falou por você. Um portfólio rápido, acessível e bonito prova domínio técnico sem dizer uma palavra.</p>
                 </article>
-                <article class="card reveal">
+                <article class="card tilt reveal">
+                    <span class="card-emoji">🧪</span>
                     <h3>Vitrine de habilidades</h3>
-                    <p>Mostre seus projetos e habilidades técnicas de forma clara e atraente.</p>
+                    <p>Projetos reais com problema, solução e resultado valem mais que 20 itens de lista de skills. Mostre o raciocínio, não só o print.</p>
                 </article>
-                <article class="card reveal">
+                <article class="card tilt reveal">
+                    <span class="card-emoji">🚀</span>
                     <h3>Oportunidades</h3>
-                    <p>Atraia recrutadores e clientes. Um portfólio bem construído abre portas.</p>
+                    <p>Clientes e recrutadores encontram você 24/7. Um bom SEO + domínio próprio transforma o portfólio em um vendedor que nunca dorme.</p>
                 </article>
             </div>
+            <div class="callout reveal">
+                <strong>Insight extra:</strong> 53% dos recrutadores abandonam um site lento ou quebrado no mobile. Teste sempre em conexão lenta e tela pequena antes de compartilhar o link.
+            </div>
         </section>
 
-        <!-- PLANEJAMENTO -->
-        <section class="split">
-            <div class="split-visual light reveal" aria-hidden="true">
-                <div class="illus">
-                    <div class="illus-card cream"><strong>Wall is you!</strong><p><i></i><i></i></p><b></b></div>
-                    <div class="illus-card blush"><strong>Dialed out</strong><span class="sun"></span><span class="plant"></span></div>
+        <!-- ROADMAP -->
+        <section class="block" id="roadmap" data-nav="Roadmap">
+            <span class="kicker">02 · Planejamento</span>
+            <h2>Roadmap interativo: do rascunho ao <span class="grad">deploy</span></h2>
+            <p class="lead">Clique em cada fase para ver objetivos, entregáveis e quanto tempo investir. Siga na ordem ou pule para o que falta no seu projeto.</p>
+            <div class="tabs" id="roadmap-tabs" role="tablist" aria-label="Fases do roadmap"></div>
+            <div class="phase-panel reveal" id="phase-panel"></div>
+        </section>
+
+        <!-- SETUP -->
+        <section class="block" id="setup" data-nav="Setup">
+            <span class="kicker">03 · Ambiente</span>
+            <h2>Configuração do ambiente: <span class="grad">na prática</span></h2>
+            <div class="split">
+                <div class="terminal reveal" id="terminal" role="button" tabindex="0" aria-label="Terminal interativo — clique para reexecutar">
+                    <div class="term-bar"><span></span><span></span><span></span><em>dev@portfolio:~</em></div>
+                    <pre class="term-out" id="term-out"></pre>
+                    <span class="term-hint">clique para reexecutar ↻</span>
                 </div>
-            </div>
-            <div class="split-copy">
-                <h2>Planejamento e Design: Estrutura e Identidade Visual</h2>
-                <ol class="steps">
-                    <li class="reveal"><span class="num">1</span><div><h3>Defina o público</h3><p>Para quem você está criando este portfólio? Ajuste o conteúdo para este público.</p></div></li>
-                    <li class="reveal"><span class="num">2</span><div><h3>Escolha a paleta de cores</h3><p>Cores consistentes reforçam sua marca pessoal e criam impacto visual.</p></div></li>
-                    <li class="reveal"><span class="num">3</span><div><h3>Crie um layout intuitivo</h3><p>Facilite a navegação. O usuário deve encontrar o que procura rapidamente.</p></div></li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- CONFIGURAÇÃO -->
-        <section class="block">
-            <h2>Configuração do Ambiente React: Ferramentas Essenciais</h2>
-            <div class="cols-3">
-                <article class="card reveal"><p>Node.js e npm (ou Yarn) são fundamentais para o desenvolvimento React.</p></article>
-                <article class="card reveal"><p>Escolha um editor de código como VS Code, com extensões para React.</p></article>
-                <article class="card reveal"><p>O terminal é crucial para executar comandos e gerenciar dependências.</p></article>
+                <div class="split-copy">
+                    <ol class="steps">
+                        <li class="reveal"><span class="num">1</span><div><h3>Node.js LTS + gerenciador</h3><p>Instale a versão LTS oficial e use <code>npm</code>, <code>pnpm</code> ou <code>yarn</code>. O Vite exige Node 18+ — confira com <code>node -v</code>.</p></div></li>
+                        <li class="reveal"><span class="num">2</span><div><h3>Editor afinado</h3><p>VS Code com extensões: ESLint, Prettier, ES7+ Snippets, Tailwind IntelliSense e React Developer Tools (navegador).</p></div></li>
+                        <li class="reveal"><span class="num">3</span><div><h3>Git desde o dia zero</h3><p>Um commit por avanço, mensagens no imperativo ("add hero section"). Recrutadores olham o histórico do GitHub — não só o resultado.</p></div></li>
+                    </ol>
+                    <div class="callout reveal"><strong>Dica bônus:</strong> coloque tokens (API keys) em <code>.env</code> com o prefixo <code>VITE_</code> e versione apenas o <code>.env.example</code>.</div>
+                </div>
             </div>
         </section>
 
         <!-- COMPONENTIZAÇÃO -->
-        <section class="block">
-            <h2>Componentização: Blocos Reutilizáveis com React</h2>
-            <ol class="steps">
-                <li class="reveal"><span class="num">1</span><div><h3>Divida a interface</h3><p>Separe a interface em componentes menores e independentes.</p></div></li>
-                <li class="reveal"><span class="num">2</span><div><h3>Reutilize componentes</h3><p>Use componentes em diferentes partes do portfólio.</p></div></li>
-                <li class="reveal"><span class="num">3</span><div><h3>Facilite a manutenção</h3><p>Componentes isolados tornam o código mais fácil de manter e atualizar.</p></div></li>
-            </ol>
-        </section>
-
-        <!-- HOOKS -->
-        <section class="split">
-            <div class="split-visual atom reveal" aria-hidden="true">
-                <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
-                <span class="ring r1"></span><span class="ring r2"></span>
-                <em class="tag t1">useState</em><em class="tag t2">useEffect</em><em class="tag t3">useContext</em>
-            </div>
-            <div class="split-copy">
-                <h2>Hooks: Gerenciando Estado e Lógica Eficaz</h2>
-                <div class="mini-grid">
-                    <article class="mini reveal"><h3>useState</h3><p>Gerencie o estado dos seus componentes de forma simples e direta.</p></article>
-                    <article class="mini reveal"><h3>useEffect</h3><p>Execute efeitos colaterais, como chamadas de API, de forma controlada.</p></article>
-                    <article class="mini reveal"><h3>useContext</h3><p>Compartilhe estados entre componentes sem precisar passar props.</p></article>
+        <section class="block" id="componentes" data-nav="Componentes">
+            <span class="kicker">04 · Arquitetura</span>
+            <h2>Componentização: blocos <span class="grad">reutilizáveis</span></h2>
+            <p class="lead">Clique nos nós da árvore para abrir e fechar a hierarquia. Cada nó é um componente — exatamente como seu portfólio deveria ser construído.</p>
+            <div class="split">
+                <div class="tree-wrap reveal">
+                    <ul class="tree" id="tree">
+                        <li class="open"><span class="node root">&lt;App /&gt;</span>
+                            <ul>
+                                <li><span class="node">&lt;Navbar /&gt;</span></li>
+                                <li class="open"><span class="node">&lt;Hero /&gt;</span>
+                                    <ul>
+                                        <li><span class="node">&lt;Typewriter /&gt;</span></li>
+                                        <li><span class="node">&lt;StatCard /&gt;</span> <em class="reused">reusado ×3</em></li>
+                                    </ul>
+                                </li>
+                                <li class="open"><span class="node">&lt;Projects /&gt;</span>
+                                    <ul>
+                                        <li><span class="node">&lt;ProjectCard /&gt;</span> <em class="reused">reusado ×6</em></li>
+                                        <li><span class="node">&lt;FilterTabs /&gt;</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="node">&lt;ContactForm /&gt;</span></li>
+                                <li><span class="node">&lt;Footer /&gt;</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="split-copy">
+                    <div class="mini-grid">
+                        <article class="mini reveal"><h3>Responsabilidade única</h3><p>Cada componente faz uma coisa bem feita. Se passou de ~150 linhas, provavelmente virou dois.</p></article>
+                        <article class="mini reveal"><h3>Props descem, eventos sobem</h3><p>Dados fluem de cima para baixo; ações voltam por callbacks. Sem isso, você recria o <code>prop drilling</code> na marra.</p></article>
+                        <article class="mini reveal"><h3>Compose, não duplique</h3><p><code>&lt;Card&gt;</code> + <code>&lt;Card.Header&gt;</code> combina flexibilidade com pouco código. Copy-paste é dívida com juros.</p></article>
+                        <article class="mini reveal"><h3>Nomeie pela intenção</h3><p><code>ProjectCard</code> comunica mais que <code>Box2</code>. Seu código é lido por humanos primeiro.</p></article>
+                    </div>
+                    <div class="callout reveal"><strong>Extra:</strong> extraia lógica repetida para hooks custom (<code>useProjects()</code>, <code>useTypewriter()</code>) — a camada de dados some da UI e vira testável.</div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTEÚDO -->
-        <section class="block">
-            <h2>Integração de Conteúdo: Projetos, Habilidades e Experiências</h2>
-            <ol class="steps">
-                <li class="reveal"><span class="num">1</span><div><h3>Projetos</h3><p>Destaque projetos com descrições detalhadas, links e imagens.</p></div></li>
-                <li class="reveal"><span class="num">2</span><div><h3>Habilidades</h3><p>Liste suas habilidades técnicas e competências de forma organizada.</p></div></li>
-                <li class="reveal"><span class="num">3</span><div><h3>Experiência</h3><p>Apresente sua experiência profissional com cargos, empresas e datas.</p></div></li>
-            </ol>
+        <!-- HOOKS -->
+        <section class="block" id="hooks" data-nav="Hooks">
+            <span class="kicker">05 · Estado &amp; efeitos</span>
+            <h2>Hooks: playground <span class="grad">funcional de verdade</span></h2>
+            <p class="lead">Não é print de código: os demos abaixo são React-like rodando aqui mesmo. Interaja e veja o estado mudar.</p>
+            <div class="cols-3">
+                <article class="demo reveal" data-demo="usestate">
+                    <header><h3>useState</h3><span class="pill">estado local</span></header>
+                    <p>Contador com estado imutável — cada clique re-renderiza só o que precisa.</p>
+                    <div class="demo-body counter-demo">
+                        <button class="btn tiny" data-step="-1">−</button>
+                        <output id="count-out">0</output>
+                        <button class="btn tiny" data-step="1">+</button>
+                        <button class="btn tiny ghost" id="count-reset">reset</button>
+                    </div>
+                    <pre class="code">const [n, setN] = useState(0)
+setN(prev => prev + 1) <em>// sempre via updater</em></pre>
+                </article>
+                <article class="demo reveal" data-demo="useeffect">
+                    <header><h3>useEffect</h3><span class="pill">efeitos colaterais</span></header>
+                    <p>Simula uma chamada de API com loading, dados e erro — o ciclo completo.</p>
+                    <div class="demo-body">
+                        <button class="btn tiny primary" id="fetch-btn">Buscar dados</button>
+                        <div class="fetch-result" id="fetch-result">Idle — aguardando ação</div>
+                    </div>
+                    <pre class="code">useEffect(() => {
+  carregar()
+}, [/* deps */]) <em>// [] = só ao montar</em></pre>
+                </article>
+                <article class="demo reveal" data-demo="usecontext">
+                    <header><h3>useContext</h3><span class="pill">estado global</span></header>
+                    <p>Tema compartilhado sem prop drilling — muda a UI do demo na hora.</p>
+                    <div class="demo-body ctx-demo" id="ctx-demo">
+                        <p>Texto de exemplo dentro do provider.</p>
+                        <button class="btn tiny" id="ctx-toggle">Alternar tema do demo</button>
+                    </div>
+                    <pre class="code">const tema = useContext(ThemeContext)
+&lt;Provider value=&#123;tema&#125;&gt;</pre>
+                </article>
+            </div>
+            <div class="mini-grid four reveal">
+                <article class="mini"><h3>useMemo</h3><p>Memoiza cálculos pesados (filtrar 500 projetos) para não recomputar a cada render.</p></article>
+                <article class="mini"><h3>useCallback</h3><p>Estabiliza funções passadas como props — essencial quando filhos recebem <code>React.memo</code>.</p></article>
+                <article class="mini"><h3>useRef</h3><p>Acessa o DOM sem causar render: focar input, medir altura, scrollar até a seção.</p></article>
+                <article class="mini"><h3>useNavigate</h3><p>Roteamento programático no React Router — redireciona após login ou envio de formulário.</p></article>
+            </div>
+            <div class="callout reveal"><strong>Regra de ouro:</strong> chame Hooks sempre no mesmo ordem, no topo do componente — dentro de <code>if</code>, <code>for</code> ou callback eles quebram o contrato do React.</div>
         </section>
 
-        <!-- OTIMIZAÇÃO -->
-        <section class="block">
-            <h2>Otimização para Performance e SEO: Melhores Práticas</h2>
-            <div class="cols-3">
-                <article class="card numbered reveal"><span class="num">1</span><h3>Otimize imagens</h3></article>
-                <article class="card numbered reveal"><span class="num">2</span><h3>Código limpo</h3></article>
-                <article class="card numbered reveal"><span class="num">3</span><h3>SEO</h3></article>
+        <!-- CONTEÚDO -->
+        <section class="block" id="projetos" data-nav="Projetos & skills">
+            <span class="kicker">06 · Conteúdo</span>
+            <h2>Projetos, skills e experiência: <span class="grad">a prova social</span></h2>
+            <p class="lead">Filtre os projetos abaixo e passe o mouse sobre os cards — eles reagem em 3D. Passe o dedo no mobile: funciona igual.</p>
+            <div class="filter-bar" id="filter-bar" role="tablist" aria-label="Filtrar projetos">
+                <button class="chip active" data-filter="all">Todos</button>
+                <button class="chip" data-filter="spa">SPA</button>
+                <button class="chip" data-filter="full">Full-stack</button>
+                <button class="chip" data-filter="3d">3D / Criativo</button>
+            </div>
+            <div class="projects" id="projects">
+                <article class="proj tilt reveal" data-cat="spa"><div class="proj-cover c1">🛒</div><h3>E-commerce Snap</h3><p>Carrinho persistente, busca fuzzy e checkout simulado. 100% client-side.</p><span class="tag">React · Vite · Zustand</span></article>
+                <article class="proj tilt reveal" data-cat="full"><div class="proj-cover c2">📊</div><h3>Dashboard Métricas</h3><p>API REST, autenticação JWT e gráficos responsivos com dados ao vivo.</p><span class="tag">React · Node · Postgres</span></article>
+                <article class="proj tilt reveal" data-cat="3d"><div class="proj-cover c3">🪐</div><h3>Cena Espacial 3D</h3><p>Planeta interativo com partículas, iluminação dinâmica e 60fps no mobile.</p><span class="tag">Three.js · R3F</span></article>
+                <article class="proj tilt reveal" data-cat="spa"><div class="proj-cover c4">📝</div><h3>Notes Flow</h3><p>Editor markdown com atalhos, busca instantânea e sync offline (PWA).</p><span class="tag">React · TypeScript</span></article>
+                <article class="proj tilt reveal" data-cat="full"><div class="proj-cover c5">💬</div><h3>Chat IA Studio</h3><p>Streaming de respostas, histórico de sessões e rate limiting no backend.</p><span class="tag">Next.js · OpenAI</span></article>
+                <article class="proj tilt reveal" data-cat="3d"><div class="proj-cover c6">🎧</div><h3>Audio Visualizer</h3><p>Waveforms reativas ao áudio via Web Audio API + WebGL.</p><span class="tag">WebGL · Web Audio</span></article>
+            </div>
+            <div class="split skills-split">
+                <div class="split-copy">
+                    <h3 class="h-sub">Skills com progresso honesto</h3>
+                    <p class="lead small">Autoavaliação é mais confiável quando explica o "porquê". Aponte o que domina, o que estuda e o que evita.</p>
+                    <div class="bars" id="bars">
+                        <div class="bar-row"><span>React / Hooks</span><div class="bar"><i data-value="92"></i></div></div>
+                        <div class="bar-row"><span>TypeScript</span><div class="bar"><i data-value="85"></i></div></div>
+                        <div class="bar-row"><span>CSS / Design Systems</span><div class="bar"><i data-value="80"></i></div></div>
+                        <div class="bar-row"><span>Node / APIs</span><div class="bar"><i data-value="72"></i></div></div>
+                        <div class="bar-row"><span>Three.js / WebGL</span><div class="bar"><i data-value="64"></i></div></div>
+                    </div>
+                </div>
+                <div class="split-copy">
+                    <h3 class="h-sub">Experiência emlinha do tempo</h3>
+                    <ol class="timeline">
+                        <li class="reveal"><span class="tl-date">2024 — hoje</span><div><strong>Front-end Pleno · Fintech</strong><p>Design system com 40+ componentes, LCP de 4,1s → 1,6s.</p></div></li>
+                        <li class="reveal"><span class="tl-date">2022 — 2024</span><div><strong>Desenvolvedor React · Agência</strong><p>12 landing pages de alta conversão com CMS headless.</p></div></li>
+                        <li class="reveal"><span class="tl-date">2021 — 2022</span><div><strong>Freelancer</strong><p>Primeiros projetos pagos: lojas, portfólios e integrações.</p></div></li>
+                    </ol>
+                    <div class="callout reveal"><strong>Formato que funciona:</strong> cada projeto seu merece 4 linhas — problema, solução, stack, resultado (com número quando possível).</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERFORMANCE -->
+        <section class="block" id="performance" data-nav="Performance & SEO">
+            <span class="kicker">07 · Qualidade</span>
+            <h2>Performance e SEO: os <span class="grad">Core Web Vitals</span></h2>
+            <p class="lead">Metas do Google para um site saudável. Passe o mouse sobre os medidores para ver como melhorar cada um.</p>
+            <div class="gauges" id="gauges">
+                <div class="gauge reveal" data-value="90" tabindex="0"><svg viewBox="0 0 120 120"><circle class="g-bg" cx="60" cy="60" r="52"/><circle class="g-fg" cx="60" cy="60" r="52"/></svg><strong>LCP</strong><span>&lt; 2,5s</span><p class="g-tip">Imagens em WebP/AVIF, fontes com <code>font-display: swap</code> e HTML estático no CDN.</p></div>
+                <div class="gauge reveal" data-value="85" tabindex="0"><svg viewBox="0 0 120 120"><circle class="g-bg" cx="60" cy="60" r="52"/><circle class="g-fg" cx="60" cy="60" r="52"/></svg><strong>CLS</strong><span>&lt; 0,1</span><p class="g-tip">Reserve espaço com <code>aspect-ratio</code> e nunca insira banner acima do conteúdo sem altura fixa.</p></div>
+                <div class="gauge reveal" data-value="95" tabindex="0"><svg viewBox="0 0 120 120"><circle class="g-bg" cx="60" cy="60" r="52"/><circle class="g-fg" cx="60" cy="60" r="52"/></svg><strong>INP</strong><span>&lt; 200ms</span><p class="g-tip">Evite tasks longas no main thread; use <code>startTransition</code> para atualizações não urgentes.</p></div>
+            </div>
+            <div class="cols-2 reveal">
+                <article class="card"><h3>Checklist SEO on-page</h3><ul class="check-list static">
+                    <li>✔ <code>&lt;title&gt;</code> único, com palavra-chave no início</li>
+                    <li>✔ Meta description de até 155 caracteres</li>
+                    <li>✔ Heading único <code>h1</code> e hierarquia sem pulos</li>
+                    <li>✔ Open Graph + favicon → compartilhamento com preview</li>
+                    <li>✔ Sitemap XML e <code>robots.txt</code> publicados</li>
+                    <li>✔ Alt descritivo em todas as imagens</li>
+                </ul></article>
+                <article class="card"><h3>Extras que impressionam</h3><ul class="check-list static">
+                    <li>✦ Dados estruturados (JSON-LD <code>Person</code>)</li>
+                    <li>✦ <code>prefers-reduced-motion</code> respeitado</li>
+                    <li>✦ Contraste WCAG AA em todo o texto</li>
+                    <li>✦ Navegação por teclado com foco visível</li>
+                    <li>✦ Lighthouse ≥ 90 nas 4 categorias</li>
+                    <li>✦ Teste real em 3G lenta e celular intermediário</li>
+                </ul></article>
             </div>
         </section>
 
         <!-- DEPLOY -->
-        <section class="block" id="deploy">
-            <h2>Deploy e Hospedagem: Publicando seu Portfólio Online</h2>
+        <section class="block" id="deploy" data-nav="Deploy">
+            <span class="kicker">08 · Publicação</span>
+            <h2>Deploy: do <span class="grad">git push</span> ao ar em segundos</h2>
+            <p class="lead">Escolha uma plataforma e assista ao pipeline rodar (simulado — mas o fluxo real é exatamente esse).</p>
+            <div class="platforms" id="platforms">
+                <button class="plat" data-name="Netlify" data-url="seu-portfolio.netlify.app"><strong>Netlify</strong><span>Drag &amp; drop ou Git · grátis · CDN global</span></button>
+                <button class="plat" data-name="Vercel" data-url="seu-portfolio.vercel.app"><strong>Vercel</strong><span>Zero config com Vite/Next · previews por PR</span></button>
+                <button class="plat" data-name="GitHub Pages" data-url="usuario.github.io/portfolio"><strong>GitHub Pages</strong><span>Grátis e integrado ao repositório</span></button>
+            </div>
+            <div class="pipeline reveal" id="pipeline" aria-live="polite">
+                <div class="pipe-stage" data-stage="Build"><i></i><span>Build</span></div>
+                <div class="pipe-link"></div>
+                <div class="pipe-stage" data-stage="Otimização"><i></i><span>Otimização</span></div>
+                <div class="pipe-link"></div>
+                <div class="pipe-stage" data-stage="CDN"><i></i><span>CDN</span></div>
+                <div class="pipe-link"></div>
+                <div class="pipe-stage" data-stage="HTTPS"><i></i><span>HTTPS</span></div>
+                <p class="pipe-msg" id="pipe-msg">Selecione uma plataforma acima ↑</p>
+            </div>
+            <div class="table-wrap reveal">
+                <table class="compare">
+                    <thead><tr><th>Plataforma</th><th>Domínio grátis</th><th>HTTPS</th><th>Deploy por Git</th><th>Melhor para</th></tr></thead>
+                    <tbody>
+                        <tr><td>Netlify</td><td>.netlify.app</td><td>✔ automático</td><td>✔</td><td>SPAs e sites estáticos</td></tr>
+                        <tr><td>Vercel</td><td>.vercel.app</td><td>✔ automático</td><td>✔</td><td>Next.js e SSR</td></tr>
+                        <tr><td>GitHub Pages</td><td>.github.io</td><td>✔ (Actions)</td><td>✔</td><td>Projetos open source</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout reveal"><strong>Depois do deploy:</strong> compre um domínio próprio (~R$ 40/ano), configure redirecionamento <code>www</code> → apex e registre o site no Google Search Console.</div>
+        </section>
+
+        <!-- CARREIRA -->
+        <section class="block" id="carreira" data-nav="Mercado & carreira">
+            <span class="kicker">09 · Novo · Mercado</span>
+            <h2>Onde os recrutadores <span class="grad">realmente olham</span></h2>
+            <p class="lead">Estimativas consolidadas de pesquisas de contratação de tech (fontes: Stack Overflow, Glassdoor, Hired). O portfólio próprio entra na equação junto com LinkedIn e GitHub — os três se potencializam.</p>
+            <div class="hbars reveal" id="hbars">
+                <div class="hbar-row"><span>LinkedIn</span><div class="hbar"><i data-value="87"></i></div><b>87%</b></div>
+                <div class="hbar-row"><span>GitHub ativo</span><div class="hbar"><i data-value="72"></i></div><b>72%</b></div>
+                <div class="hbar-row"><span>Portfólio próprio</span><div class="hbar"><i data-value="68"></i></div><b>68%</b></div>
+                <div class="hbar-row"><span>Indicação interna</span><div class="hbar"><i data-value="55"></i></div><b>55%</b></div>
+                <div class="hbar-row"><span>Behance / Dribbble</span><div class="hbar"><i data-value="31"></i></div><b>31%</b></div>
+            </div>
             <div class="cols-3">
-                <article class="card reveal"><h3>Netlify</h3><p>Simples e rápido.</p></article>
-                <article class="card reveal"><h3>Vercel</h3><p>Escalabilidade garantida.</p></article>
-                <article class="card reveal"><h3>GitHub Pages</h3><p>Integração fácil.</p></article>
+                <article class="card tilt reveal"><span class="card-emoji">💰</span><h3>Faixas salariais BR</h3><p>Front-end júnior: R$ 2,5k–4,5k · Pleno: R$ 5k–9k · Sênior: R$ 10k–18k+ (CLT, grandes centros, 2025/2026). Home office comprime/regionaliza a faixa.</p></article>
+                <article class="card tilt reveal"><span class="card-emoji">🤖</span><h3>IA como acelerador</h3><p>Copilot/Cursor aceleram boilerplate, mas o diferencial continua sendo arquitetura, revisão e produto. Documente no portfólio <em>como</em> você usa IA — isso já é skill avaliada.</p></article>
+                <article class="card tilt reveal"><span class="card-emoji">🧱</span><h3>Stack em alta 2026</h3><p>React + TypeScript segue como base. Somam: Next.js App Router, Tailwind, React Query/TanStack, Server Components e no visual: motion/design systems.</p></article>
+            </div>
+            <h3 class="h-sub spaced">Erros que fazem o portfólio ser ignorado</h3>
+            <div class="cols-2 reveal">
+                <ul class="vs-list bad">
+                    <li><b>Projeto "to-do list" sozinho</b> — mostre 1 app completo, não 10 tutoriais iguais.</li>
+                    <li><b>Textos genéricos</b> — "apaixonado por tecnologia" não diferencia ninguém.</li>
+                    <li><b>Site lento ou quebrado no mobile</b> — motivo nº 1 de bounce.</li>
+                    <li><b>Link morto no README</b> — teste o deploy em aba anônima antes de enviar.</li>
+                </ul>
+                <ul class="vs-list good">
+                    <li><b>Estudo de caso por projeto</b> — contexto, decisões, resultado.</li>
+                    <li><b>Números reais</b> — "de 4s para 1,2s de LCP" vale mais que "otimizado".</li>
+                    <li><b>Sobre você com personalidade</b> — foto, stack, o que te move.</li>
+                    <li><b>CTA óbvio</b> — e-mail/LinkedIn visível no topo e no rodapé.</li>
+                </ul>
             </div>
         </section>
 
-        <!-- PRÓXIMOS PASSOS -->
-        <section class="block">
-            <h2>Próximos Passos: Aprimorando Continuamente seu Portfólio</h2>
+        <!-- QUIZ -->
+        <section class="block" id="quiz" data-nav="Quiz">
+            <span class="kicker">10 · Autoavaliação</span>
+            <h2>Quiz: o quão pronto está <span class="grad">o seu portfólio</span>?</h2>
+            <p class="lead">Cinco perguntas rápidas. Ao final, você recebe um diagnóstico com o próximo passo exato.</p>
+            <div class="quiz reveal" id="quiz-card">
+                <div class="quiz-progress"><i id="quiz-progress-bar"></i></div>
+                <div id="quiz-body"></div>
+            </div>
+        </section>
+
+        <!-- PRÓXIMOS PASSOS / CHECKLIST -->
+        <section class="block" id="checklist" data-nav="Próximos passos">
+            <span class="kicker">11 · Evolução contínua</span>
+            <h2>Próximos passos: <span class="grad">melhorar sem parar</span></h2>
             <div class="pyramid-wrap">
                 <div class="pyramid reveal" aria-hidden="true">
-                    <div class="tier t1"><span>1</span></div>
+                    <div class="tier t1"><span>3</span></div>
                     <div class="tier t2"><span>2</span></div>
-                    <div class="tier t3"><span>3</span></div>
+                    <div class="tier t3"><span>1</span></div>
                 </div>
                 <ul class="pyramid-labels">
-                    <li class="reveal">Feedback</li>
-                    <li class="reveal">Atualizações</li>
-                    <li class="reveal">Novas tecnologias</li>
+                    <li class="reveal"><strong>3 · Novas tecnologias</strong><p>Server Components, WebGL, IA — adicione quando o fundamentals já estiver sólido.</p></li>
+                    <li class="reveal"><strong>2 · Atualizações</strong><p>Um projeto novo ou revisto por trimestre mantém o portfólio vivo e indexado.</p></li>
+                    <li class="reveal"><strong>1 · Feedback</strong><p>Base de tudo: envie para mentores, devs seniores e pessoas de RH — e ajuste.</p></li>
                 </ul>
             </div>
-            <p class="closing">Colete feedback de colegas e mentores. Adicione novos projetos e habilidades. Explore novas tecnologias para manter seu portfólio atualizado.</p>
+            <div class="checklist-box reveal">
+                <div class="checklist-head">
+                    <h3>Checklist de publicação</h3>
+                    <div class="check-progress"><i id="check-progress-bar"></i><span id="check-progress-label">0/8</span></div>
+                </div>
+                <p class="tiny-note">Seu progresso fica salvo neste navegador (localStorage) — pode fechar a aba.</p>
+                <ul class="check-list" id="checklist-items">
+                    <li><label><input type="checkbox" data-key="dom"> Domínio próprio configurado e SSL ativo</label></li>
+                    <li><label><input type="checkbox" data-key="mobile"> Testado em celular real e rede lenta</label></li>
+                    <li><label><input type="checkbox" data-key="links"> Todos os links e botões funcionando</label></li>
+                    <li><label><input type="checkbox" data-key="lighthouse"> Lighthouse ≥ 90 em Performance e Acessibilidade</label></li>
+                    <li><label><input type="checkbox" data-key="seo"> Title, description e OG image revisados</label></li>
+                    <li><label><input type="checkbox" data-key="cases"> 3+ projetos com estudo de caso completo</label></li>
+                    <li><label><input type="checkbox" data-key="about"> Seção "Sobre" com foto, stack e contato</label></li>
+                    <li><label><input type="checkbox" data-key="github"> README do GitHub apontando para o site</label></li>
+                </ul>
+            </div>
+            <p class="closing reveal">Colete feedback, publique frequentemente e trate o portfólio como um produto: ele é o projeto mais importante da sua carreira, porque todos os outros passam por ele.</p>
         </section>
     </main>
 
     <footer>
-        <p>Reconstrução fiel para estudo a partir do documento “Construindo um Portfólio Profissional com React”.</p>
+        <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">
+            <circle cx="20" cy="20" r="3.4" fill="var(--accent)"/>
+            <ellipse cx="20" cy="20" rx="17" ry="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+            <ellipse cx="20" cy="20" rx="17" ry="7" fill="none" stroke="var(--accent-2)" stroke-width="1.6" transform="rotate(60 20 20)"/>
+            <ellipse cx="20" cy="20" rx="17" ry="7" fill="none" stroke="var(--accent-3)" stroke-width="1.6" transform="rotate(120 20 20)"/>
+        </svg>
+        <p>Experiência interativa construída a partir do documento “Construindo um Portfólio Profissional com React” — reimaginada em 3D, com demos funcionais, quiz e checklist.</p>
+        <p class="tiny-note">Three.js via CDN · sem build · funciona abrindo o <code>index.html</code> direto no navegador.</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js" defer></script>
+    <script src="js/scene3d.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

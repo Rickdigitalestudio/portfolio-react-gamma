@@ -336,6 +336,9 @@ section { padding: 92px 0; scroll-margin-top: 76px; }
 .proj-cover.c4 { background: linear-gradient(135deg, #9d174d, #f472b6); }
 .proj-cover.c5 { background: linear-gradient(135deg, #b45309, #fbbf24); }
 .proj-cover.c6 { background: linear-gradient(135deg, #374151, #a78bfa); }
+.proj-cover.c7 { background: linear-gradient(135deg, #0b1026, #e9b54a); }
+.proj-cover.c8 { background: linear-gradient(135deg, #7f1d1d, #fca5a5); }
+.proj-cover.c9 { background: linear-gradient(135deg, #111827, #38bdf8); }
 .proj h3 { margin: 20px 22px 8px; font-size: 1.08rem; }
 .proj p { margin: 0 22px 14px; font-size: .88rem; }
 .proj .tag { margin-left: 22px; font-size: .72rem; font-weight: 600; color: var(--accent); background: var(--badge); padding: 4px 12px; border-radius: 999px; }

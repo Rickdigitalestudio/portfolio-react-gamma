@@ -472,7 +472,13 @@ addEventListener('keydown', e => {
 if (!prefersReduced) {
     const startScene = () => {
         if (typeof window.__initScene === 'function') {
-            try { window.__initScene($('#scene3d')); } catch (e) { $('#scene3d').style.display = 'none'; }
+            try {
+                window.__initScene($('#scene3d'));
+            } catch (e) {
+                window.__scene3dError = String((e && e.stack) || e);
+                console.error('[scene3d]', e);
+                $('#scene3d').style.display = 'none';
+            }
         } else {
             $('#scene3d').style.display = 'none'; // CDN indisponível: página segue de pé
         }
